@@ -26,7 +26,7 @@
         <div class="flex justify-between items-center lg:p-3 mt-4 py-2 px-3">
           <!-- Website logo -->
           <div class="">
-            <a href="#"
+            <a href="index.html"
               ><img
                 src="images/desiHeart-logo.png"
                 alt=""
@@ -66,18 +66,21 @@
             <i
               class="fa-regular fa-circle-user text-3xl hover:text-red-500 cursor-pointer"
             ></i>
-            <div class="flex justify-center items-center">
-              <i
-                class="fa-solid fa-bag-shopping text-3xl hover:text-green-500 cursor-pointer"
-              ></i>
-              <p
-                class="bg-green-500 w-7 h-7 text-center text-[18px] text-white rounded-full relative right-4 top-2"
-              >
-                0
-              </p>
-            </div>
+            <a href="cart.html">
+              <div class="flex justify-center items-center">
+                <i
+                  class="fa-solid fa-bag-shopping text-3xl hover:text-green-500 cursor-pointer"
+                ></i>
+                <p
+                  class="bg-green-500 w-7 h-7 text-center text-[18px] text-white rounded-full relative right-4 top-2"
+                >
+                  0
+                </p>
+              </div>
+            </a>
             <i
               class="fa-solid fa-toggle-off text-3xl hover:text-blue-700 cursor-pointer"
+              id="themeBtn"
             ></i>
           </div>
           <!-- humburger-icon -->
@@ -126,16 +129,18 @@
           <i
             class="fa-regular fa-circle-user text-3xl hover:text-red-500 cursor-pointer"
           ></i>
-          <div class="flex justify-center items-center">
-            <i
-              class="fa-solid fa-bag-shopping text-3xl hover:text-green-500 cursor-pointer"
-            ></i>
-            <p
-              class="bg-green-500 w-7 h-7 text-center text-[18px] text-white rounded-full relative right-4 top-2"
-            >
-              0
-            </p>
-          </div>
+          <a href="cart.html">
+            <div class="flex justify-center items-center">
+              <i
+                class="fa-solid fa-bag-shopping text-3xl hover:text-green-500 cursor-pointer"
+              ></i>
+              <p
+                class="bg-green-500 w-7 h-7 text-center text-[18px] text-white rounded-full relative right-4 top-2"
+              >
+                0
+              </p>
+            </div>
+          </a>
           <i
             class="fa-solid fa-toggle-off text-3xl hover:text-blue-700 cursor-pointer"
           ></i>
@@ -145,7 +150,6 @@
 
     <!-- Hero page -->
     <section>
-      <!-- Laptop screen view -->
       <div
         class="lg:flex justify-center lg:flex-row flex-col gap-50 items-center lg:mt-22 mt-5 px-4"
         id="Hero-page"
@@ -163,15 +167,17 @@
             dish is prepared to give you comfort, flavor, and a memorable dining
             experience..
           </p>
-          <button
-            class="flex justify-between items-center gap-1 py-4 px-17 mt-5 text-[19px] bg-orange-400 rounded-lg hover:bg-orange-300"
-          >
-            Explore menu <i class="fa-solid fa-arrow-right-long"></i>
-          </button>
+          <a href="#" data-target="Dishes" class="Links">
+            <button
+              class="flex justify-between items-center gap-1 py-4 px-17 mt-5 text-[19px] bg-orange-400 rounded-lg hover:bg-orange-300"
+            >
+              Explore menu <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </a>
         </div>
         <div class="flex justify-center items-center">
           <img
-            src="images/hero-img.webp"
+            src="images/hero-img.png"
             alt="Hero image"
             class="pr-7 mt-6"
             id="Hero-img"
@@ -184,7 +190,7 @@
     <section id="About">
       <h1 class="text-center text-4xl mb-2 lg:mt-17 font-bold">ABOUT US</h1>
       <div
-        class="lg:flex justify-around items-center bg-sky-100 lg:p-10 p-5 lg:h-150"
+        class="lg:flex justify-around items-center lg:p-10 p-5 lg:h-150 border-b border-dark"
       >
         <div class="about-page">
           <h1
@@ -235,11 +241,11 @@
           class="lg:flex justify-center flex mt-5 flex-wrap items-center lg:gap-19 gap-10"
         >
           <div id="menu-item" class="flex justify-center items-center flex-col">
-            <img src="images/salad-menu-1.webp" alt="" class="w-40" />
+            <img src="images/salad-menu-1.png" alt="" class="w-40" />
             <p class="text-[18px] font-semibold">Salad</p>
           </div>
           <div id="menu-item" class="flex justify-center items-center flex-col">
-            <img src="images/veg-menu-5.webp" alt="" class="w-30" />
+            <img src="images/veg-menu-5.png" alt="" class="w-30" />
             <p class="text-[18px] font-semibold">Pure Veg</p>
           </div>
           <div id="menu-item" class="flex justify-center items-center flex-col">
@@ -247,11 +253,11 @@
             <p class="text-[18px] font-semibold mt-3.5">Cake</p>
           </div>
           <div id="menu-item" class="flex justify-center items-center flex-col">
-            <img src="images/deserts-menu-3.webp" alt="" class="w-30" />
+            <img src="images/deserts-menu-3.png" alt="" class="w-30" />
             <p class="text-[18px] font-semibold">Deserts</p>
           </div>
           <div id="menu-item" class="flex justify-center items-center flex-col">
-            <img src="images/roll-menu-2.webp" alt="" class="w-30" />
+            <img src="images/roll-menu-2.png" alt="" class="w-30" />
             <p class="text-[18px] font-semibold">Rolls</p>
           </div>
         </div>
@@ -259,7 +265,7 @@
     </section>
 
     <!-- Food item section -->
-    <section>
+    <section id="Dishes">
       <div class="lg:mt-20 flex justify-center items-center flex-col">
         <h1 class="text-center text-5xl font-serif lg:mb-10 mt-12 mb-10">
           Top dishes
@@ -272,7 +278,7 @@
             class="onetoFour border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/Fruit-Nut-Salad.webp"
+              src="images/Fruit-Nut-Salad.png"
               alt="Fruit Nut salad"
               class="w-40"
             />
@@ -303,7 +309,7 @@
             class="onetoFour border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/Cake-Black-Cake.webp"
+              src="images/Cake-Black-Cake.png"
               alt="Black Forest Cake"
               class="w-38"
             />
@@ -333,7 +339,7 @@
             class="onetoFour border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/veg-Kaju-Curry.webp"
+              src="images/veg-Kaju-Curry.png"
               alt="Fruit Nut salad"
               class="w-45 h-45"
             />
@@ -393,7 +399,7 @@
             class="fivetoEight border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/deserts-Chocolate-Brownie.jpg"
+              src="images/deserts-Chocolate-Brownie.png"
               alt="Fruit Nut salad"
               class="w-40 h-48"
             />
@@ -423,7 +429,7 @@
             class="fivetoEight border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/veg-Palak-Paneer.webp"
+              src="images/veg-Palak-Paneer.png"
               alt="Fruit Nut salad"
               class="w-80 h-43"
             />
@@ -483,7 +489,7 @@
             class="fivetoEight border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/veg-Aloo-Tikka.webp"
+              src="images/veg-Aloo-Tikka.png"
               alt="Fruit Nut salad"
               class="w-40 h-48"
             />
@@ -513,7 +519,7 @@
             class="ninetoTwelve border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/Cake-Red-Cake.webp"
+              src="images/Cake-Red-Cake.png"
               alt="Fruit Nut salad"
               class="w-40 h-47.5"
             />
@@ -543,7 +549,7 @@
             class="ninetoTwelve border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/Veg-Kolhapuri.webp"
+              src="images/Veg-Kolhapuri.png"
               alt="Fruit Nut salad"
               class="w-40 h-47.5"
             />
@@ -573,7 +579,7 @@
             class="ninetoTwelve border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/deserts-Gulab-Jamun.webp"
+              src="images/deserts-Gulab-Jamun.png"
               alt="Fruit Nut salad"
               class="w-40 h-42"
             />
@@ -604,7 +610,7 @@
             class="ninetoTwelve border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/deserts-Rasmalai.avif"
+              src="images/deserts-rasmalai.png"
               alt="Fruit Nut salad"
               class="w-40 h-48"
             />
@@ -634,7 +640,7 @@
             class="thirteentoSixteen border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/Greek-Veg-Salad.webp"
+              src="images/Greek-Veg-Salad.png"
               alt="Fruit Nut salad"
               class="w-40 h-44"
             />
@@ -724,7 +730,7 @@
             class="thirteentoSixteen border w-80 p-3 flex justify-center items-center flex-col rounded shadow-black shadow"
           >
             <img
-              src="images/Fresh-Garden-Salad.jpg"
+              src="images/Fresh-Garden-Salad.png"
               alt="Fruit Nut salad"
               class="w-40 h-44"
             />
@@ -851,7 +857,7 @@
 
     <!-- Footer section -->
     <footer>
-      <div class="w-full bg-sky-300 lg:p-4 md:p-3.5 p-2.5">
+      <div class="w-full bg-sky-300 lg:p-4 md:p-3.5 p-2.5 text-black">
         <div class="lg:flex md:flex justify-between">
           <div class="">
             <img

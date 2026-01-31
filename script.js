@@ -133,3 +133,19 @@ function ScrollBtn() {
   });
 }
 ScrollBtn();
+
+// Theme Functionality
+
+let themeBtn = document.querySelector("#themeBtn");
+let isblack = true;
+
+themeBtn.addEventListener("click", (e) => {
+  if (isblack) {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+  } else {
+    document.body.style.backgroundColor = "white";
+    document.body.style.color = "black";
+  }
+  isblack = !isblack;
+});
