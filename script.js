@@ -149,3 +149,21 @@ themeBtn.addEventListener("click", (e) => {
   }
   isblack = !isblack;
 });
+
+let userProfile = document.querySelector("#userProfile");
+let SignUp = document.querySelector("#SignUp");
+let SignupForm = document.querySelector("#SignupForm");
+let MainForm = document.querySelector("#MainForm");
+let loginBtn = document.querySelector("#loginBtn");
+userProfile.addEventListener("click", () => {
+  MainForm.classList.toggle("hidden");
+});
+SignUp.addEventListener("click", () => {
+  //MainForm.style.display = "none";
+  MainForm.classList.toggle("hidden");
+  SignupForm.classList.toggle("hidden");
+});
+loginBtn.addEventListener("click", () => {
+  MainForm.classList.toggle("hidden");
+  SignupForm.classList.toggle("hidden");
+});
