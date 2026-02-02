@@ -9,3 +9,8 @@ body {
 body {
   overflow-x: hidden;
 }
+.cont {
+  width: 99px;
+  height: 49px;
+  background-color: red;
+}

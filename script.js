@@ -167,3 +167,51 @@ loginBtn.addEventListener("click", () => {
   MainForm.classList.toggle("hidden");
   SignupForm.classList.toggle("hidden");
 });
+
+// LocalStorage setItem method
+
+function saveToLocalStorage(fooditems) {
+  return localStorage.setItem("fooditem", JSON.stringify(fooditems));
+}
+
+function getfromLocalStorage() {
+  return localStorage.getItem("fooditems") || [];
+}
+// Order buttons functionality
+let selecteditem = null;
+let orderBtns = document.querySelectorAll(".orderBtn");
+orderBtns.forEach((orderBtn) => {
+  orderBtn.addEventListener("click", function () {
+    selecteditem = this.closest(".food-items");
+
+    let name = selecteditem.dataset.name;
+    let price = Number(selecteditem.dataset.price);
+    let image = selecteditem.dataset.image;
+
+    addToCartfunction(name, price, image);
+  });
+});
+
+function addToCartfunction(name, price, image) {
+  let cart = getfromLocalStorage();
+
+  let existingfood = cart.find((item) => item.name === name);
+}
+
+function displayCartItems() {
+  let CartContainer = document.querySelector("#CartContainer");
+  let cart = getfromLocalStorage();
+  CartContainer.innerHTML = "";
+  cart.forEach((item) => {
+    // let Container = document.createElement("div");
+
+    let namep = document.createElement("p");
+    namep.textContent = `${item.name}`;
+
+    CartContainer.appendChild(namep);
+  });
+}
+
+displayCartItems();
+
+// Display items functionality working start
