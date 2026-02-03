@@ -20,83 +20,6 @@ gsap.from("#website-logo", {
   duration: 0.8,
   opacity: 0,
 });
-function smallScreenAnimation() {
-  mm.add("(max-width:1024px)", () => {});
-}
-smallScreenAnimation();
-
-function bigScreenAnimation() {
-  mm.add("(min-width:1400px)", () => {
-    // For Hero section
-    let hero = gsap.timeline();
-    hero.from(
-      "#Hero-box",
-      {
-        x: -100,
-        opacity: 0,
-        duration: 0.8,
-      },
-      "hero",
-    );
-    hero.from(
-      "#Hero-img",
-      {
-        x: 100,
-        opacity: 0,
-        duration: 0.8,
-      },
-      "hero",
-    );
-
-    // For About
-    let about = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#About",
-        scroller: "body",
-        start: "top 55%",
-        end: "top 20%",
-        scrub: true,
-      },
-    });
-    about.from(
-      ".about-page",
-      {
-        x: -80,
-        opacity: 0,
-        duration: 0.8,
-      },
-      "about",
-    );
-    about.from(
-      ".about-img",
-      {
-        x: 80,
-        opacity: 0,
-        duration: 0.7,
-      },
-      "about",
-    );
-
-    // For Menu
-    let menu = gsap.timeline();
-    menu.from("#menu-item", {
-      y: -40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: "#Menu",
-        scroller: "body",
-        start: "top 55%",
-        end: "top 25%",
-        scrub: true,
-      },
-    });
-
-    // For menu Dishes
-  });
-}
-bigScreenAnimation();
 
 let NavMenu = document.querySelector("#NavMenu");
 let NavLink = document.querySelector("#nav-dialogue");
@@ -170,13 +93,14 @@ loginBtn.addEventListener("click", () => {
 
 // LocalStorage setItem method
 
-function saveToLocalStorage(fooditems) {
-  return localStorage.setItem("fooditem", JSON.stringify(fooditems));
+function getfromLocalStorage() {
+  return JSON.parse(localStorage.getItem("fooditems")) || [];
 }
 
-function getfromLocalStorage() {
-  return localStorage.getItem("fooditems") || [];
+function saveToLocalStorage(fooditems) {
+  return localStorage.setItem("fooditems", JSON.stringify(fooditems));
 }
+
 // Order buttons functionality
 let selecteditem = null;
 let orderBtns = document.querySelectorAll(".orderBtn");
@@ -188,30 +112,62 @@ orderBtns.forEach((orderBtn) => {
     let price = Number(selecteditem.dataset.price);
     let image = selecteditem.dataset.image;
 
-    addToCartfunction(name, price, image);
+    addToCartfunction(
+      selecteditem.dataset.name,
+      Number(selecteditem.dataset.price),
+      selecteditem.dataset.image,
+    );
   });
 });
 
 function addToCartfunction(name, price, image) {
-  let cart = getfromLocalStorage();
+  let foodcart = getfromLocalStorage();
 
-  let existingfood = cart.find((item) => item.name === name);
+  let existingfood = foodcart.find((item) => item.name === name);
+
+  if (existingfood) {
+    existingfood.quantity += 1;
+  } else {
+    foodcart.push({ name, image, price, quantity: 1 });
+  }
+  saveToLocalStorage(foodcart);
 }
 
 function displayCartItems() {
-  let CartContainer = document.querySelector("#CartContainer");
-  let cart = getfromLocalStorage();
-  CartContainer.innerHTML = "";
-  cart.forEach((item) => {
-    // let Container = document.createElement("div");
+  let foodcart = getfromLocalStorage();
+  console.log(foodcart);
+  let Container = document.querySelector("#FoodContainer");
+  console.log(Container);
+
+  Container.innerHTML = "";
+
+  foodcart.forEach((food) => {
+    let parentdiv = document.createElement("div");
 
     let namep = document.createElement("p");
-    namep.textContent = `${item.name}`;
+    namep.textContent = `${food.name}`;
 
-    CartContainer.appendChild(namep);
+    let img = document.createElement("img");
+    img.src = `${food.image}`;
+
+    let price = document.createElement("p");
+    price.textContent = `₹${food.price}`;
+
+    let quantity = document.createElement("div");
+    quantity.textContent = `${food.quantity}`;
+
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "Cancel";
+
+    parentdiv.appendChild(namep);
+    parentdiv.appendChild(img);
+    parentdiv.appendChild(price);
+    parentdiv.appendChild(removeBtn);
+    Container.appendChild(parentdiv);
   });
 }
 
-displayCartItems();
-
+document.addEventListener("DOMContentLoaded", () => {
+  displayCartItems();
+});
 // Display items functionality working start
