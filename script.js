@@ -96,6 +96,7 @@ loginBtn.addEventListener("click", () => {
 function getfromLocalStorage() {
   return JSON.parse(localStorage.getItem("fooditems")) || [];
 }
+console.log("Foodcart:", getfromLocalStorage());
 
 function saveToLocalStorage(fooditems) {
   return localStorage.setItem("fooditems", JSON.stringify(fooditems));
@@ -132,42 +133,3 @@ function addToCartfunction(name, price, image) {
   }
   saveToLocalStorage(foodcart);
 }
-
-function displayCartItems() {
-  let foodcart = getfromLocalStorage();
-  console.log(foodcart);
-  let Container = document.querySelector("#FoodContainer");
-  console.log(Container);
-
-  Container.innerHTML = "";
-
-  foodcart.forEach((food) => {
-    let parentdiv = document.createElement("div");
-
-    let namep = document.createElement("p");
-    namep.textContent = `${food.name}`;
-
-    let img = document.createElement("img");
-    img.src = `${food.image}`;
-
-    let price = document.createElement("p");
-    price.textContent = `₹${food.price}`;
-
-    let quantity = document.createElement("div");
-    quantity.textContent = `${food.quantity}`;
-
-    let removeBtn = document.createElement("button");
-    removeBtn.textContent = "Cancel";
-
-    parentdiv.appendChild(namep);
-    parentdiv.appendChild(img);
-    parentdiv.appendChild(price);
-    parentdiv.appendChild(removeBtn);
-    Container.appendChild(parentdiv);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  displayCartItems();
-});
-// Display items functionality working start
