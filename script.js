@@ -96,7 +96,6 @@ loginBtn.addEventListener("click", () => {
 function getfromLocalStorage() {
   return JSON.parse(localStorage.getItem("fooditems")) || [];
 }
-console.log("Foodcart:", getfromLocalStorage());
 
 function saveToLocalStorage(fooditems) {
   return localStorage.setItem("fooditems", JSON.stringify(fooditems));
@@ -133,3 +132,17 @@ function addToCartfunction(name, price, image) {
   }
   saveToLocalStorage(foodcart);
 }
+
+function FoodCount() {
+  let itemqty = document.querySelector("#foodqty");
+  let foodcart = getfromLocalStorage();
+
+  let itemcount = foodcart.reduce((prev, curr) => prev + curr.quantity, 0);
+
+  itemqty.innerText = `${itemcount}`;
+}
+
+FoodCount();
+
+// due to flex and thier sub property food item is place at the center of the screen.
+// Tommorow start work from here.
