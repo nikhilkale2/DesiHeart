@@ -30,7 +30,7 @@ function displayCartItems() {
       "px-5",
       "lg:w-full",
       "md:w-full",
-      "w-[90%]",
+      "w-full",
       "lg:h-40",
       "md:h-40",
       "h-auto",
@@ -67,6 +67,9 @@ function displayCartItems() {
       "text-[18px]",
       "border",
       "rounded",
+      "cursor-pointer",
+      "hover:bg-black",
+      "hover:text-white",
     );
     removeBtn.addEventListener("click", () => removeFoodItem(index));
     parentdiv.appendChild(indexp);
@@ -85,6 +88,8 @@ function removeFoodItem(index) {
   foodcart.splice(index, 1);
 
   saveToLocalStorage(foodcart);
+  displayCartItems();
+  FoodCount();
 }
 
 function FoodCount() {

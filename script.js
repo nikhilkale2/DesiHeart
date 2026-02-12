@@ -57,38 +57,61 @@ function ScrollBtn() {
 }
 ScrollBtn();
 
-// Theme Functionality
+// Theme functionality
 
-let themeBtn = document.querySelector("#themeBtn");
-let isblack = true;
+function themefunctionality() {
+  let themeBtn = document.querySelector("#themeBtn");
 
-themeBtn.addEventListener("click", (e) => {
-  if (isblack) {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-  } else {
-    document.body.style.backgroundColor = "white";
-    document.body.style.color = "black";
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
   }
-  isblack = !isblack;
-});
+
+  themeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
+
+themefunctionality();
+
+// Login and sign up form functionality
 
 let userProfile = document.querySelector("#userProfile");
 let SignUp = document.querySelector("#SignUp");
 let SignupForm = document.querySelector("#SignupForm");
 let MainForm = document.querySelector("#MainForm");
 let loginBtn = document.querySelector("#loginBtn");
+let closeForm = document.querySelector("#closeForm");
+let closeForm2 = document.querySelector("#closeForm2");
+
 userProfile.addEventListener("click", () => {
   MainForm.classList.toggle("hidden");
 });
+
+closeForm.addEventListener("click", () => {
+  MainForm.classList.add("hidden");
+});
+
+closeForm2.addEventListener("click", () => {
+  SignupForm.classList.add("hidden");
+});
+
 SignUp.addEventListener("click", () => {
   //MainForm.style.display = "none";
   MainForm.classList.toggle("hidden");
-  SignupForm.classList.toggle("hidden");
+  SignupForm.classList.remove("hidden");
 });
+
 loginBtn.addEventListener("click", () => {
   MainForm.classList.toggle("hidden");
-  SignupForm.classList.toggle("hidden");
+  SignupForm.classList.add("hidden");
 });
 
 // LocalStorage setItem method
@@ -131,6 +154,7 @@ function addToCartfunction(name, price, image) {
     foodcart.push({ name, image, price, quantity: 1 });
   }
   saveToLocalStorage(foodcart);
+  FoodCount();
 }
 
 function FoodCount() {
@@ -143,6 +167,3 @@ function FoodCount() {
 }
 
 FoodCount();
-
-// due to flex and thier sub property food item is place at the center of the screen.
-// Tommorow start work from here.

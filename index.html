@@ -25,7 +25,7 @@
       <div class="max-w-full h-14 lg:px-9">
         <div class="flex justify-between items-center lg:p-3 mt-4 py-2 px-3">
           <!-- Website logo -->
-          <div class="">
+          <div class="bg-white">
             <a href="index.html"
               ><img
                 src="images/desiHeart-logo.png"
@@ -130,6 +130,7 @@
         <div class="flex gap-4 mt-5">
           <i
             class="fa-regular fa-circle-user text-3xl hover:text-red-500 cursor-pointer"
+            id="userProfile"
           ></i>
           <a href="cart.html">
             <div class="flex justify-center items-center">
@@ -146,6 +147,7 @@
           </a>
           <i
             class="fa-solid fa-toggle-off text-3xl hover:text-blue-700 cursor-pointer"
+            id="themeBtn"
           ></i>
         </div>
       </div>
@@ -977,7 +979,7 @@
     <!-- Form for sign in / sign up -->
     <section>
       <div
-        class="absolute top-10 left-140 lg:w-120 p-3 bg-sky-700/30 backdrop-blur-3xl rounded flex justify-center items-center flex-col hidden"
+        class="absolute top-10 left-140 lg:w-120 p-3 backdrop-blur-3xl rounded flex justify-center items-center flex-col hidden shadow-black shadow"
         id="MainForm"
       >
         <form action="" id="LoginForm" class="flex flex-col gap-2">
@@ -1007,14 +1009,19 @@
             <a href="#" class="text-blue-700 border-b" id="SignUp">Sign up</a>
           </p>
           <button
-            class="text-center h-10 w-40 rounded border-0 bg-white hover:bg-black hover:text-white text-[18px] mt-4"
+            class="text-center h-10 w-40 rounded bg-white text-black hover:bg-black hover:text-white text-[18px] mt-4 border"
           >
             Login
           </button>
         </form>
+
+        <i
+          class="fa-solid fa-circle-xmark absolute top-2 right-1 text-3xl cursor-pointer hover:text-red-500"
+          id="closeForm"
+        ></i>
       </div>
       <div
-        class="bg-sky-700/30 backdrop-blur-3xl w-104 absolute top-10 left-150 rounded hidden"
+        class="shadow-black shadow backdrop-blur-3xl w-105 absolute top-10 left-150 rounded hidden"
         id="SignupForm"
       >
         <form
@@ -1031,6 +1038,7 @@
               placeholder="Enter full name"
               id="inputName"
               class="border h-10 px-3 rounded"
+              required
             />
           </div>
           <div class="flex flex-col">
@@ -1040,6 +1048,7 @@
               placeholder="Enter your email"
               id="inputEmail"
               class="border h-10 px-3 rounded"
+              required
             />
           </div>
           <div class="flex gap-3">
@@ -1050,6 +1059,7 @@
                 placeholder="Enter your Country"
                 id="inputCountry"
                 class="border h-10 px-3 rounded w-44"
+                required
               />
             </div>
             <div class="flex flex-col">
@@ -1059,6 +1069,7 @@
                 placeholder="Enter your State"
                 id="inputState"
                 class="border h-10 px-3 w-42 rounded"
+                required
               />
             </div>
           </div>
@@ -1069,6 +1080,7 @@
               placeholder="Enter your Password"
               id="inputPass"
               class="border h-10 px-3 rounded"
+              required
             />
           </div>
           <p class="">
@@ -1083,6 +1095,11 @@
             Sign up
           </button>
         </form>
+
+        <i
+          class="fa-solid fa-circle-xmark absolute top-2 right-1.5 text-4xl cursor-pointer hover:text-red-500"
+          id="closeForm2"
+        ></i>
       </div>
     </section>
 
