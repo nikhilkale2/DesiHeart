@@ -127,6 +127,10 @@ function saveToLocalStorage(fooditems) {
 // Order buttons functionality
 let selecteditem = null;
 let orderBtns = document.querySelectorAll(".orderBtn");
+let ClosePopup = document.querySelector("#ClosePopup");
+let foodQtyInput = document.querySelector("#foodQtyInput");
+let ConfirmOrder = document.querySelector("#ConfirmOrder");
+
 orderBtns.forEach((orderBtn) => {
   orderBtn.addEventListener("click", function () {
     selecteditem = this.closest(".food-items");
@@ -135,27 +139,50 @@ orderBtns.forEach((orderBtn) => {
     let price = Number(selecteditem.dataset.price);
     let image = selecteditem.dataset.image;
 
-    addToCartfunction(
-      selecteditem.dataset.name,
-      Number(selecteditem.dataset.price),
-      selecteditem.dataset.image,
-    );
+    orderPopup();
   });
 });
 
-function addToCartfunction(name, price, image) {
+// Confirm order button functionality
+ConfirmOrder.addEventListener("click", () => {
+  let Qty = Number(foodQtyInput.value);
+  if (!Qty) return;
+
+  popupModal.classList.add("hidden");
+
+  addToCartfunction(
+    selecteditem.dataset.name,
+    Number(selecteditem.dataset.price),
+    selecteditem.dataset.image,
+    Qty,
+  );
+});
+
+function closePopup() {
+  ClosePopup.addEventListener("click", () => {
+    popupModal.classList.add("hidden");
+  });
+}
+
+closePopup();
+
+// Add to cart functionality
+
+function addToCartfunction(name, price, image, Qty) {
   let foodcart = getfromLocalStorage();
 
   let existingfood = foodcart.find((item) => item.name === name);
 
   if (existingfood) {
-    existingfood.quantity += 1;
+    existingfood.quantity += Qty;
   } else {
-    foodcart.push({ name, image, price, quantity: 1 });
+    foodcart.push({ name, image, price, quantity: Qty });
   }
   saveToLocalStorage(foodcart);
   FoodCount();
 }
+
+// Food count item functionality in cart
 
 function FoodCount() {
   let itemqty = document.querySelector("#foodqty");
@@ -167,3 +194,17 @@ function FoodCount() {
 }
 
 FoodCount();
+
+//Show order popup modal
+
+function orderPopup() {
+  let popupModal = document.querySelector("#popupModal");
+  let OrderFoodImg = document.querySelector("#OrderFoodImg");
+  let OrderFoodName = document.querySelector("#OrderFoodName");
+  let OrderFoodPrice = document.querySelector("#OrderFoodPrice");
+  popupModal.classList.remove("hidden");
+
+  OrderFoodImg.src = selecteditem.dataset.image;
+  OrderFoodName.textContent = selecteditem.dataset.name;
+  OrderFoodPrice.textContent = `Price: ₹${selecteditem.dataset.price}`;
+}

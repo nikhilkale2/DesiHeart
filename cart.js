@@ -52,7 +52,7 @@ function displayCartItems() {
     img.classList.add("w-40", "h-auto", "md:w-30");
 
     let price = document.createElement("p");
-    price.textContent = `₹${food.price}`;
+    price.textContent = `₹${food.price * food.quantity}`;
     price.classList.add("text-[18px]");
 
     let quantity = document.createElement("div");
