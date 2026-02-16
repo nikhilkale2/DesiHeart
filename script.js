@@ -208,3 +208,30 @@ function orderPopup() {
   OrderFoodName.textContent = selecteditem.dataset.name;
   OrderFoodPrice.textContent = `Price: ₹${selecteditem.dataset.price}`;
 }
+
+function FoodSearchinMenu() {
+  let inputFoodSearch = document.querySelector("#inputFoodSearch");
+  let emptymsg = document.querySelector("#emptymsg");
+  let foodItems = document.querySelectorAll(".food-items");
+
+  inputFoodSearch.addEventListener("input", (e) => {
+    let searchInput = e.target.value.toLowerCase();
+    foodItems.forEach((item) => {
+      let foodname = item.dataset.name.toLowerCase();
+
+      if (foodname.includes(searchInput)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+        emptymsg.style.display = "block";
+      }
+    });
+  });
+}
+
+FoodSearchinMenu();
+
+// function SortFoodItem() {
+//   let HightoLow = document.querySelector("#HightoLow");
+//   let LowtoHigh = document.querySelector("#LowtoHigh");
+// }
